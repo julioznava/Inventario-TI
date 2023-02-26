@@ -85,7 +85,7 @@ opcion_DEPARTAMENTOS = [
     ["Corporativo","Corporativo"],
     ["Ventas","Ventas"],
     ["BTA","BTA"],
-    ["BTG","BTG"],
+    ["Grupos","Grupos"],
     ["BTO","BTO"],
     ["Administracion","Administracion"],
     ["Operaciones","Operaciones"],

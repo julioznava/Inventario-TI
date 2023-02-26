@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.3.19']
 
+LOGIN_REDIRECT_URL = 'panel'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Application definition
 

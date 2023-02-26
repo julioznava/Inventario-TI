@@ -1,47 +1,62 @@
 {% include 'baseti.html' %}
 {% load static %}
 <br>
+<br>
      <!-- ALERTAS DASHBOARD -->
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <div class="col-md">
                     <div class="card text-center text-dark mb-3 alert alert-info shadow" id="total_listarusuario" style="border: none;">
                         <div class="card-header">
                             <h5 class="card-title" style="color: #318497">Total usuarios</h5>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title" style="color: #318497">{{ total_listarusuario }}</h3>
+                            <h3 class="card-title" style="color: #318497">{{ total_listarasignaciones }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <div class="col-md">
                     <div class="card text-center text-dark mb-3 alert alert-dark shadow" id="total_listarusuario" style="border: none">
                         <div class="card-header">
                             <h5 class="card-title" style="color: #6B6B6B">Total equipos</h5>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title" style="color: #6B6B6B">{{ total_listarecolector }}</h3>
+                            <h3 class="card-title" style="color: #6B6B6B">{{ total_equipos }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <div class="col-md">
                     <div class="card text-center text-dark mb-3 alert alert-success shadow" id="total_listarusuario" style="border: none">
                         <div class="card-header">
-                            <h5 class="card-title" style="color: #51876E">Total de publicaciones</h5>
+                            <h5 class="card-title" style="color: #51876E">Total de monitores</h5>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title" style="color: #51876E">{{ total_listaraviso }}</h3>
+                            <h3 class="card-title" style="color: #51876E">{{ total_monitores }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-3">
+                <div class="col-md">
+                    <div class="card text-center text-dark mb-3 alert alert-success shadow" id="total_listarusuario" style="border: none">
+                        <div class="card-header">
+                            <h5 class="card-title" style="color: #51876E">Total de perisfericos</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #51876E">{{ total_perisfericos }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 <br>
@@ -71,7 +86,7 @@
                             <th>Perifericos</th>
 
                         </tr>
-                            {% for asignacion in listarasignacion %}
+                            {% for asignacion in listar_asignaciones %}
                         <tr>
                             <td>{{ asignacion.usuarios}}</td>
                             <td>{{ asignacion.departamentos }}</td>

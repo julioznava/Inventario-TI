@@ -22,13 +22,19 @@ def login(request):
 def panel(request):
     busqueda_asignacion = request.GET.get("busqueda_asignacion")
 
-    listarasignacion = Asignacion.objects.all()
+    listar_asignaciones = Asignacion.objects.all()
+    listar_equipos = Equipos.objects.all()
+    listar_monitores = Monitores.objects.all()
+    listar_perisfericos = Perifericos.objects.all()
 
-    total_listarasignacion = listarasignacion.count()
 
+    total_listarasignaciones = listar_asignaciones.count()
+    total_equipos = listar_equipos.count()
+    total_monitores = listar_monitores.count()
+    total_perisfericos = listar_perisfericos.count()
 
     if busqueda_asignacion:
-        listarasignacion = Asignacion.objects.filter(
+        listar_asignaciones = Asignacion.objects.filter(
             Q(usuarios__icontains=busqueda_asignacion) |
             Q(departamentos__icontains=busqueda_asignacion) |
             Q(equipo__icontains=busqueda_asignacion) |
@@ -38,8 +44,11 @@ def panel(request):
         ).distinct()
 
     context = {
-        'listarasignacion': listarasignacion,
-        'total_listarasignacion': total_listarasignacion
+        'listar_asignaciones': listar_asignaciones,
+        'total_listarasignaciones': total_listarasignaciones,
+        'total_equipos': total_equipos,
+        'total_monitores': total_monitores,
+        'total_perisfericos': total_perisfericos,
 
 
     }
