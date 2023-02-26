@@ -4,6 +4,7 @@ from .forms import AsignacionForm, EquiposForm, MonitoresForm, PerifericosForm, 
 from django.contrib.auth import authenticate, login
 from django.db.models import Q
 from django.contrib import messages
+from .filters import AsignacionFilter
 
 
 
@@ -20,7 +21,9 @@ def login(request):
 
 # === MENU DASHBOARD ====
 def panel(request):
-    busqueda_asignacion = request.GET.get("busqueda_asignacion")
+    asignacion = Asignacion.objects.all()
+    filtro = AsignacionFilter(request.GET, queryset=asignacion)
+
 
     listar_asignaciones = Asignacion.objects.all()
     listar_equipos = Equipos.objects.all()
@@ -33,22 +36,14 @@ def panel(request):
     total_monitores = listar_monitores.count()
     total_perisfericos = listar_perisfericos.count()
 
-    if busqueda_asignacion:
-        listar_asignaciones = Asignacion.objects.filter(
-            Q(usuarios__icontains=busqueda_asignacion) |
-            Q(departamentos__icontains=busqueda_asignacion) |
-            Q(equipo__icontains=busqueda_asignacion) |
-            Q(monitor__icontains=busqueda_asignacion) |
-            Q(periferico__icontains=busqueda_asignacion)
-
-        ).distinct()
-
     context = {
         'listar_asignaciones': listar_asignaciones,
         'total_listarasignaciones': total_listarasignaciones,
         'total_equipos': total_equipos,
         'total_monitores': total_monitores,
         'total_perisfericos': total_perisfericos,
+        'filtro': filtro,
+
 
 
     }
