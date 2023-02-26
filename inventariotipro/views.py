@@ -1,33 +1,98 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Equipos, Monitores, Perifericos
-from .forms import EquiposForm, MonitoresForm, PerifericosForm, CustomUserCreationForm
+from .models import Equipos, Monitores, Perifericos, Asignacion, Departamento
+from .forms import AsignacionForm, EquiposForm, MonitoresForm, PerifericosForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from django.db.models import Q
 from django.contrib import messages
+
 
 
 # === INDEX ====
 
 def home(request):
-    if 'q' in request.GET:
-        q = request.GET['q']
-        data = Equipos.objects.filter(codigo__icontains=q)
-    else:
-        data = Equipos.objects.all()
-    context = {
-        'data': data
-    }
     return render(request, 'home.html')
-
 
 # === LOGIN  ====
 
 def login(request):
     return render(request, 'registration/login.html')
 
-# === MENU DASHBOARD ====
 
+# === MENU DASHBOARD ====
 def panel(request):
-    return render(request, 'panel.html')
+    busqueda_asignacion = request.GET.get("busqueda_asignacion")
+
+    listarasignacion = Asignacion.objects.all()
+
+    total_listarasignacion = listarasignacion.count()
+
+
+    if busqueda_asignacion:
+        listarasignacion = Asignacion.objects.filter(
+            Q(usuarios__icontains=busqueda_asignacion) |
+            Q(departamentos__icontains=busqueda_asignacion) |
+            Q(equipo__icontains=busqueda_asignacion) |
+            Q(monitor__icontains=busqueda_asignacion) |
+            Q(periferico__icontains=busqueda_asignacion)
+
+        ).distinct()
+
+    context = {
+        'listarasignacion': listarasignacion,
+        'total_listarasignacion': total_listarasignacion
+
+
+    }
+    return render(request, 'panel.html', context)
+
+
+# === MENU ASIGNACION ====
+def asignacion(request):
+    data = {
+        'form': AsignacionForm()
+    }
+    if request.method == 'POST':
+        formulario = AsignacionForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Se han ingresado los datos correctamente."
+        else:
+            data['form'] = formulario
+
+    return render(request, 'Asignar/asignacion.html', data)
+
+
+def listarequipos(request):
+
+    listar = Equipos.objects.all()
+
+    data = {
+        'listar': listar,
+    }
+    return render(request, 'Equipos/listarequipos.html', data)
+
+
+def modificarequipos(request, id):
+    equipos = get_object_or_404(Equipos, id=id)
+
+    data = {
+        'form':EquiposForm(instance=equipos)
+    }
+    if request.method == 'POST':
+        formulario = EquiposForm(data=request.POST, instance=equipos)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="listarequipos")
+        data["form"] = formulario
+
+    return render(request, 'Equipos/modificarequipos.html', data)
+
+
+def eliminarequipos(request, id):
+    eliminarequipo = get_object_or_404(Equipos, id=id)
+    eliminarequipo.delete()
+    return redirect(to="listarequipos")
+
 
 
 # === MENU EQUIPOS ====

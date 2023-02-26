@@ -1,7 +1,14 @@
 from django import forms
-from .models import Equipos, Monitores, Perifericos
+from .models import Equipos, Monitores, Perifericos, Asignacion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+
+class AsignacionForm(forms.ModelForm):
+
+    class Meta:
+        model = Asignacion
+        fields = '__all__'
 
 class EquiposForm(forms.ModelForm):
 

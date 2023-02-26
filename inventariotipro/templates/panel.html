@@ -1,10 +1,95 @@
 {% include 'baseti.html' %}
 {% load static %}
 <br>
-    <div class="card text-center">
-        <div class="card-body">
-            <h1>Ejemplo de dashboard (en construccion...)</h1>
-            <br>
-            <img src="{% static '/img/ejemplo.png' %}" alt="logo-login" class="rounded mx-auto d-block" style="width:1500px">
+     <!-- ALERTAS DASHBOARD -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="col-md">
+                    <div class="card text-center text-dark mb-3 alert alert-info shadow" id="total_listarusuario" style="border: none;">
+                        <div class="card-header">
+                            <h5 class="card-title" style="color: #318497">Total usuarios</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #318497">{{ total_listarusuario }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="col-md">
+                    <div class="card text-center text-dark mb-3 alert alert-dark shadow" id="total_listarusuario" style="border: none">
+                        <div class="card-header">
+                            <h5 class="card-title" style="color: #6B6B6B">Total equipos</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #6B6B6B">{{ total_listarecolector }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="col-md">
+                    <div class="card text-center text-dark mb-3 alert alert-success shadow" id="total_listarusuario" style="border: none">
+                        <div class="card-header">
+                            <h5 class="card-title" style="color: #51876E">Total de publicaciones</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #51876E">{{ total_listaraviso }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+<br>
+<br>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="card card-body shadow">
+                    <h5 class="text-center">LISTADO DE USUARIOS </h5>
+                    <br>
+                    <td><a class="btn btn-success btn-lg" href="{% url ' asignacion' %}">Asignar</a></td>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <form class="form-inline">
+                                <input class="form-control mr-sm-" type="search" placeholder="Busqueda..." aria-label="Search" name="busqueda_asignacion">
+                            </form>
+                        </div>
+                    </div>
+                    <!--TABLA USUARIOS REGISTRADOS -->
+                    <table class="table table-sm text-center">
+                        <tr>
+                            <th>Nombre </th>
+                            <th>Departamento</th>
+                            <th>Equipos</th>
+                            <th>Monitores</th>
+                            <th>Perifericos</th>
+
+                        </tr>
+                            {% for asignacion in listarasignacion %}
+                        <tr>
+                            <td>{{ asignacion.usuarios}}</td>
+                            <td>{{ asignacion.departamentos }}</td>
+                            <td>{{ asignacion.equipo }}</td>
+                            <td>{{ asignacion.monitor }}</td>
+                            <td>{{ asignacion.periferico }}</td>
+
+
+                            <td><a class="btn btn-success" href="">Habilitar</a></td>
+                            <td><a  class="btn btn-danger" href="">Deshabilitar</a>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                <!--FIN TABLA USUARIOS REGISTRADOS -->
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+

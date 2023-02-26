@@ -142,7 +142,7 @@ class Equipos(models.Model):
 
 
     def __str__(self):
-        return self.codigo
+        return (self.codigo)
 
 class Monitores(models.Model):
     codigo = models.CharField(max_length=100)
