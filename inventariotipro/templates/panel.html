@@ -1,5 +1,6 @@
 {% include 'baseti.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 <br>
 <br>
      <!-- ALERTAS DASHBOARD -->
@@ -73,7 +74,7 @@
                         <div class="col">
                             <br>
                             <form class="form-inline">
-                                {{filtro.form}}
+                                {{filtro.form | crispy }}
                                 <button class="btn btn-secondary">Buscar</button>
                             </form>
                             <br>

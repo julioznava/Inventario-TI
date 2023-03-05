@@ -22,8 +22,6 @@ def login(request):
 # === MENU DASHBOARD ====
 def panel(request):
     asignacion = Asignacion.objects.all()
-    filtro = AsignacionFilter(request.GET, queryset=asignacion)
-
 
     listar_asignaciones = Asignacion.objects.all()
     listar_equipos = Equipos.objects.all()
@@ -42,7 +40,7 @@ def panel(request):
         'total_equipos': total_equipos,
         'total_monitores': total_monitores,
         'total_perisfericos': total_perisfericos,
-        'filtro': filtro,
+        'asignacion': asignacion,
 
 
 
