@@ -13,3 +13,4 @@ sqlparse
 tzdata
 wheel
 django
+whitenoise
