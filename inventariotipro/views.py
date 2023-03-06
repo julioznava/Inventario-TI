@@ -60,6 +60,31 @@ def asignacion(request):
     return render(request, 'Asignar/asignacion.html', data)
 
 
+
+def modificarasignacion(request, id):
+    asignacion = get_object_or_404(Asignacion, id=id)
+
+    data = {
+        'form':PerifericosForm(instance=asignacion)
+    }
+    if request.method == 'POST':
+        formulario = PerifericosForm(data=request.POST, instance=asignacion)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="panel")
+        data["form"] = formulario
+
+    return render(request, 'Asignar/modificarasignacion.html', data)
+
+def eliminarasigncion(request, id):
+    eliminarasignacion = get_object_or_404(Asignacion, id=id)
+    eliminarasignacion.delete()
+    return redirect(to="panel")
+
+
+
+
+
 def listarequipos(request):
     listar = Equipos.objects.all()
     busqueda_equipo = request.GET.get("busqueda_equipo")
