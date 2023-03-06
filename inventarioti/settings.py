@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$*6fplfq-u5lfe7$pzv!7a507(whlcpyjzn416l)^dtpo2^wu7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #=====RAILWAY=======
 ALLOWED_HOSTS = ['inventario-ti-production.up.railway.app']
 
