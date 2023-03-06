@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'inventariotipro',
     'crispy_forms',
     'crispy_bootstrap5',
-    'cloudinary',
     'colorfield',
 ]
 
