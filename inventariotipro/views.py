@@ -76,7 +76,7 @@ def modificarasignacion(request, id):
 
     return render(request, 'Asignar/modificarasignacion.html', data)
 
-def eliminarasigncion(request, id):
+def eliminarasignacion(request, id):
     eliminarasignacion = get_object_or_404(Asignacion, id=id)
     eliminarasignacion.delete()
     return redirect(to="panel")
