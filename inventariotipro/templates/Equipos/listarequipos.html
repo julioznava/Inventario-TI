@@ -1,49 +1,69 @@
-{% include 'baseti.html' %}
+{%  include 'baseti.html' %}
+{% load static %}
 <br>
-    <div class="card text-center table-responsive">
-        <div class="card-body">
-            <h2>Registro de equipos</h2>
-            <br>
-                <td><a class="btn btn-success btn-lg" href="{% url 'equipos' %}">Agregar equipo</a></td>
-            </div>
-
+<br>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12">
+            <h5 class="text-center">LISTADO DE EQUIPOS</h5>
                 <br>
-                <table class="table table-striped table-hover text-center">
-                            <tr class="align-content-center">
-                                <th>Codigo</th>
-                                <th>Num serie</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Procesador</th>
-                                <th>Sistema Operativo</th>
-                                <th>Disco duro</th>
-                                <th>RAM</th>
-                                <th>Direccion IP</th>
-                                <th>Hostname</th>
-                                <th>Estado</th>
-                                <th>Observaciones</th>
-                            </tr>
-                                {% for l in listar %}
-                            <tr>
-                                <td>{{ l.codigo }}</td>
-                                <td>{{ l.serieproducto }}</td>
-                                <td>{{ l.marca }}</td>
-                                <td>{{ l.modelo }}</td>
-                                <td>{{ l.procesador }}</td>
-                                <td>{{ l.sistema_operativo }}</td>
-                                <td>{{ l.disco_duro }}</td>
-                                <td>{{ l.memoria_ram }}</td>
-                                <td>{{ l.direccion_ip }}</td>
-                                <td>{{ l.hostname }}</td>
-                                <td>{{ l.estado }}</td>
-                                <td>{{ l.observaciones }}</td>
-                                <td><a class="btn btn-primary" href="{% url 'modificarequipos' l.id %}">Modificar</a></td>
-                                <td><a class="btn btn-secondary btn-danger" href="{% url 'eliminarequipos' l.id %}">Eliminar</a></td>
-                            </tr>
-                                {% endfor %}
-                </table>
+                <div class="card card-body shadow">
+                    <td><a class="btn btn-success btn-lg" href="{% url 'equipos' %}">Agregar equipo</a></td>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <br>
+                            <form class="form-inline">
+                                <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search" name="search">
+                            </form>
+                        </div>
+                    </div>
+                    <!--TABLA USUARIOS REGISTRADOS -->
+                    <table class="table table-sm text-center">
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Num serie</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Procesador</th>
+                            <th>Sistema Operativo</th>
+                            <th>Disco duro</th>
+                            <th>RAM</th>
+                            <th>Direccion IP</th>
+                            <th>Hostname</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                        </tr>
+
+                            {% for l in listar %}
+                        <tr>
+                            <td>{{ l.codigo }}</td>
+                            <td>{{ l.serieproducto }}</td>
+                            <td>{{ l.marca }}</td>
+                            <td>{{ l.modelo }}</td>
+                            <td>{{ l.procesador }}</td>
+                            <td>{{ l.sistema_operativo }}</td>
+                            <td>{{ l.disco_duro }}</td>
+                            <td>{{ l.memoria_ram }}</td>
+                            <td>{{ l.direccion_ip }}</td>
+                            <td>{{ l.hostname }}</td>
+                            <td>{{ l.estado }}</td>
+                            <td>{{ l.observaciones }}</td>
+
+                            <td><a class="btn btn-success" href="{% url 'modificarequipos' l.id %}">Modificar</a></td>
+                            <td><a  class="btn btn-danger" href="{% url 'eliminarequipos' l.id %}">Eliminar</a>
+                        </tr>
+                             {% endfor %}
+                    </table>
+                <!--FIN TABLA USUARIOS REGISTRADOS -->
+                </div>
             </div>
         </div>
     </div>
+<br>
+<br>
+
+
+
 
 

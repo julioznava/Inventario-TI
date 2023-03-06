@@ -126,9 +126,9 @@ opcion_USUARIOS = [
 
 
 class Equipos(models.Model):
-    codigo = models.CharField(max_length=100)
-    serieproducto = models.CharField(max_length=100,  blank=True)
-    tipo = models.CharField(max_length=50, choices=opcion_TIPO, blank=True, null=True)
+    codigo = models.CharField(max_length=100, unique=True)
+    serieproducto = models.CharField(max_length=100,  blank=True, unique=True)
+    tipo = models.CharField(max_length=50, choices=opcion_TIPO, blank=True, null=True, default= 'DESKTOP')
     marca = models.CharField(max_length=100, choices=opcion_MARCA)
     modelo = models.CharField(max_length=100)
     procesador = models.CharField(max_length=50, choices=opcion_PROCESADOR)
@@ -136,8 +136,8 @@ class Equipos(models.Model):
     disco_duro = models.CharField(max_length=100, choices=opcion_HDD)
     memoria_ram = models.CharField(max_length=100, choices=opcion_RAM)
     direccion_ip = models.CharField(max_length=50)
-    hostname = models.CharField(max_length=50, null=True)
-    estado = models.CharField(max_length=100, choices=opcion_ESTADO)
+    hostname = models.CharField(max_length=50, null=True, unique=True)
+    estado = models.CharField(max_length=100, choices=opcion_ESTADO, default='Inactivo')
     observaciones = models.CharField(max_length=150, blank=True)
 
 
@@ -145,11 +145,11 @@ class Equipos(models.Model):
         return (self.codigo)
 
 class Monitores(models.Model):
-    codigo = models.CharField(max_length=100)
-    serieproducto = models.CharField(max_length=100, blank=True)
+    codigo = models.CharField(max_length=100, unique=True)
+    serieproducto = models.CharField(max_length=100, blank=True, unique=True)
     marca = models.CharField(max_length=100, choices=opcion_MARCA)
     modelo = models.CharField(max_length=100)
-    estado = models.CharField(max_length=100, choices=opcion_ESTADO)
+    estado = models.CharField(max_length=100, choices=opcion_ESTADO, default='Inactivo')
     observaciones = models.CharField(max_length=150, blank=True)
 
     def __str__(self):
@@ -158,10 +158,10 @@ class Monitores(models.Model):
 
 class Perifericos(models.Model):
     tipo_periferico = models.CharField(max_length=100, choices=opcion_PERIFERICO)
-    serieproducto = models.CharField(max_length=100)
+    serieproducto = models.CharField(max_length=100, unique=True)
     marca = models.CharField(max_length=100, choices=opcion_MARCA)
     modelo = models.CharField(max_length=100)
-    estado = models.CharField(max_length=100, choices=opcion_ESTADO)
+    estado = models.CharField(max_length=100, choices=opcion_ESTADO, default='Inactivo')
     observaciones = models.CharField(max_length=150, blank=True)
 
     def __str__(self):

@@ -65,8 +65,9 @@
     <div class="container-fluid">
         <div class="row text-center">
             <div class="col-12">
+            <h5 class="text-center">LISTADO DE USUARIOS </h5>
+                <br>
                 <div class="card card-body shadow">
-                    <h5 class="text-center">LISTADO DE USUARIOS </h5>
                     <br>
                     <td><a class="btn btn-success btn-lg" href="{% url ' asignacion' %}">Asignar</a></td>
                     <br>
@@ -75,7 +76,6 @@
                             <br>
                             <form class="form-inline">
                                 {{filtro.form | crispy }}
-                                <button class="btn btn-secondary">Buscar</button>
                             </form>
                             <br>
                         </div>
@@ -97,10 +97,6 @@
                             <td>{{ asignacion.equipo }}</td>
                             <td>{{ asignacion.monitor }}</td>
                             <td>{{ asignacion.periferico }}</td>
-
-
-                            <td><a class="btn btn-success" href="">Habilitar</a></td>
-                            <td><a  class="btn btn-danger" href="">Deshabilitar</a>
                         </tr>
                         {% endfor %}
                     </table>

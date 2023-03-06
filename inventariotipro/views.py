@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Equipos, Monitores, Perifericos, Asignacion, Departamento
+from .models import Equipos, Monitores, Perifericos, Asignacion
 from .forms import AsignacionForm, EquiposForm, MonitoresForm, PerifericosForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.db.models import Q
 from django.contrib import messages
-from .filters import AsignacionFilter
-
-
 
 # === INDEX ====
 
@@ -42,13 +39,12 @@ def panel(request):
         'total_perisfericos': total_perisfericos,
         'asignacion': asignacion,
 
-
-
     }
     return render(request, 'panel.html', context)
 
 
 # === MENU ASIGNACION ====
+
 def asignacion(request):
     data = {
         'form': AsignacionForm()
@@ -65,19 +61,30 @@ def asignacion(request):
 
 
 def listarequipos(request):
-
     listar = Equipos.objects.all()
+    busqueda_equipo = request.GET.get("busqueda_equipo")
 
-    data = {
+    if busqueda_equipo:
+        listar = Equipos.objects.filter(
+            Q(codigo__icontains=busqueda_equipo) |
+            Q(serieproducto__icontains=busqueda_equipo) |
+            Q(tipo__icontains=busqueda_equipo) |
+            Q(marca__icontains=busqueda_equipo)
+        ).distinct()
+
+    context = {
         'listar': listar,
+        'busqueda_equipo': busqueda_equipo
+
     }
-    return render(request, 'Equipos/listarequipos.html', data)
+
+    return render(request, 'Equipos/listarequipos.html', context)
 
 
 def modificarequipos(request, id):
     equipos = get_object_or_404(Equipos, id=id)
 
-    data = {
+    context = {
         'form':EquiposForm(instance=equipos)
     }
     if request.method == 'POST':
@@ -85,9 +92,9 @@ def modificarequipos(request, id):
         if formulario.is_valid():
             formulario.save()
             return redirect(to="listarequipos")
-        data["form"] = formulario
+        context["form"] = formulario
 
-    return render(request, 'Equipos/modificarequipos.html', data)
+    return render(request, 'Equipos/modificarequipos.html', context)
 
 
 def eliminarequipos(request, id):
@@ -115,13 +122,12 @@ def equipos(request):
 
 
 def listarequipos(request):
-
     listar = Equipos.objects.all()
 
-    data = {
+    context = {
         'listar': listar,
     }
-    return render(request, 'Equipos/listarequipos.html', data)
+    return render(request, 'Equipos/listarequipos.html', context)
 
 
 def modificarequipos(request, id):
