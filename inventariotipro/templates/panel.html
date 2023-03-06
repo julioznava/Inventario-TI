@@ -98,8 +98,8 @@
                             <td>{{ asignacion.monitor }}</td>
                             <td>{{ asignacion.periferico }}</td>
 
-                            <td><a class="btn btn-success" href="{% url 'modificarasignacion' l.id %}">Modificar</a></td>
-                            <td><a  class="btn btn-danger" href="{% url 'eliminarasignacion' l.id %}">Eliminar</a>
+                            <td><a class="btn btn-success" href="{% url 'modificarasignacion' asignacion.id %}">Modificar</a></td>
+                            <td><a  class="btn btn-danger" href="{% url 'eliminarasignacion' asignacion.id %}">Eliminar</a>
                         </tr>
                         {% endfor %}
                     </table>

@@ -65,7 +65,7 @@ def modificarasignacion(request, id):
     asignacion = get_object_or_404(Asignacion, id=id)
 
     data = {
-        'form':PerifericosForm(instance=asignacion)
+        'form':AsignacionForm(instance=asignacion)
     }
     if request.method == 'POST':
         formulario = PerifericosForm(data=request.POST, instance=asignacion)
