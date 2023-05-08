@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row text-center">
             <div class="col-12">
-            <h5 class="text-center">LISTADO DE PERISFERICOS</h5>
+            <h5 class="text-center">LISTADO DE PERIFERICOS</h5>
                 <br>
                 <div class="card card-body shadow">
                     <td><a class="btn btn-success btn-lg" href="{% url 'perifericos' %}">Agregar periferico</a></td>
@@ -40,8 +40,8 @@
                             <td>{{ l.estado }}</td>
                             <td>{{ l.observaciones }}</td>
 
-                            <td><a class="btn btn-success" href="{% url 'modificarperisferico' l.id %}">Modificar</a></td>
-                            <td><a  class="btn btn-danger" href="{% url 'eliminarperisfericos' l.id %}">Eliminar</a>
+                            <td><a class="btn btn-success" href="{% url 'modificarperiferico' l.id %}">Modificar</a></td>
+                            <td><a  class="btn btn-danger" href="{% url 'eliminarperifericos' l.id %}">Eliminar</a>
                         </tr>
                              {% endfor %}
                     </table>

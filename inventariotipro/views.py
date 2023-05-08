@@ -23,20 +23,20 @@ def panel(request):
     listar_asignaciones = Asignacion.objects.all()
     listar_equipos = Equipos.objects.all()
     listar_monitores = Monitores.objects.all()
-    listar_perisfericos = Perifericos.objects.all()
+    listar_perifericos = Perifericos.objects.all()
 
 
     total_listarasignaciones = listar_asignaciones.count()
     total_equipos = listar_equipos.count()
     total_monitores = listar_monitores.count()
-    total_perisfericos = listar_perisfericos.count()
+    total_perifericos = listar_perifericos.count()
 
     context = {
         'listar_asignaciones': listar_asignaciones,
         'total_listarasignaciones': total_listarasignaciones,
         'total_equipos': total_equipos,
         'total_monitores': total_monitores,
-        'total_perisfericos': total_perisfericos,
+        'total_perifericos': total_perifericos,
         'asignacion': asignacion,
 
     }
@@ -250,24 +250,24 @@ def listarperifericos(request):
     }
     return render(request, 'Perifericos/listarperifericos.html', data)
 
-def modificarperisferico(request, id):
-    perisfericos = get_object_or_404(Perifericos, id=id)
+def modificarperiferico(request, id):
+    perifericos = get_object_or_404(Perifericos, id=id)
 
     data = {
-        'form':PerifericosForm(instance=perisfericos)
+        'form':PerifericosForm(instance=perifericos)
     }
     if request.method == 'POST':
-        formulario = PerifericosForm(data=request.POST, instance=perisfericos)
+        formulario = PerifericosForm(data=request.POST, instance=perifericos)
         if formulario.is_valid():
             formulario.save()
             return redirect(to="listarperifericos")
         data["form"] = formulario
 
-    return render(request, 'Perifericos/modificarperisfericos.html', data)
+    return render(request, 'Perifericos/modificarperifericos.html', data)
 
-def eliminarperisfericos(request, id):
-    eliminarperisferico = get_object_or_404(Perifericos, id=id)
-    eliminarperisferico.delete()
+def eliminarperifericos(request, id):
+    eliminarperiferico = get_object_or_404(Perifericos, id=id)
+    eliminarperiferico.delete()
     return redirect(to="listarperifericos")
 
 

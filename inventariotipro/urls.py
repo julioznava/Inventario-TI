@@ -18,8 +18,8 @@ urlpatterns = [
     path('modificarmonitores/<id>/', modificarmonitores, name='modificarmonitores'),
     path('eliminarmonitores/<id>/', eliminarmonitores, name='eliminarmonitores'),
     path('modificarequipos/<id>/', modificarequipos, name='modificarequipos'),
-    path('modificarperisferico/<id>/', modificarperisferico, name='modificarperisferico'),
-    path('eliminarperisfericos/<id>/', eliminarperisfericos, name='eliminarperisfericos'),
+    path('modificarperiferico/<id>/', modificarperiferico, name='modificarperiferico'),
+    path('eliminarperifericos/<id>/', eliminarperifericos, name='eliminarperifericos'),
     path('registro/', registro, name='registro'),
 
 ]

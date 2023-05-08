@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$*6fplfq-u5lfe7$pzv!7a507(whlcpyjzn416l)^dtpo2^wu7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 #=====RAILWAY=======
-ALLOWED_HOSTS = ['inventario-ti-production.up.railway.app']
+# ALLOWED_HOSTS = ['inventario-ti-production.up.railway.app']
 
 # ===== EN LOCAL ====
-# DEBUG = True
-# ALLOWED_HOSTS = []
+DEBUG = True
+ALLOWED_HOSTS = []
 
 
 LOGIN_REDIRECT_URL = 'panel'
@@ -163,4 +163,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://inventario-ti-production.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = ['https://inventario-ti-production.up.railway.app']
