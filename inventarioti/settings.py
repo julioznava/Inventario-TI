@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'inventarioti.wsgi.application'
 # }
 
 
-# =========== MYSQL AWS =====================
+# =========== MYSQL AWS ====================
 
 DATABASES = {
     'default': {
