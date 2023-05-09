@@ -109,7 +109,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bdinventario',
         'USER': 'julioznava',
-        'PASSWORD': 'SdKs136.',
+        'PASSWORD': 'sqlserver.2023',
         'HOST': 'database-inventario.cup6rkc5tisz.sa-east-1.rds.amazonaws.com',
         'PORT': 3306
     }
