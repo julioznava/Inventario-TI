@@ -1,5 +1,5 @@
 # Inventario-TI
-Proyecto para Codigo facilito. inventario para área de informática y servicio de tickets Helpdesk (en construcción)
+Proyecto para Codigo facilito. inventario para área de informática y e intranet en el cual se integrara ademas un  servicio de tickets Helpdesk (en construcción)
 
 
 Instrucciones para la ejecucion del programa
