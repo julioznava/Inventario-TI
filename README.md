@@ -1,7 +1,13 @@
 # Inventario-TI
 
-Proyecto para Código facilito. inventario para área de informática y e intranet en el cual se integrara además un servicio de tickets HelpDesk (en construcción)
+ inventario para área de informática y e intranet en el cual se integrara además un servicio de tickets HelpDesk (en construcción)
 
+Proyecto realizado con los siguientes lenguajes y frameworks:
+
+- Python (Django)
+- HTML
+- CSS
+- Bootstrap 5
 
 
 ### Imágenes
@@ -65,3 +71,19 @@ http://127.0.0.1:8000/listarmonitores
 http://127.0.0.1:8000/listarperifericos
 
 http://127.0.0.1:8000/registro
+
+
+
+###	Posibles desarrollo futuro y correcciones:
+
+* Agregar un buscador para buscar equipos, periféricos y que persona tiene asignada tal cantidad de equipos.
+
+* Crear un sistema de ticket de TI  dentro de este mismo proyecto
+* Crear a nivel de backend un sistema de ingreso de noticias en el cual se redacte por medio de HTML y aparezca en el apartado principal con envió de correo. (especie de newletters)
+* Realizar mejoras visuales (mas atractivas)
+* Mejorar el modelo de los models.py
+
+
+
+Proyecto realizado por  **® **Julio Navarro Rojas - 2023
+
