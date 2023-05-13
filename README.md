@@ -85,5 +85,5 @@ http://127.0.0.1:8000/registro
 
 
 
-Proyecto realizado por  **® **Julio Navarro Rojas - 2023
+Proyecto realizado por  ®Julio Navarro Rojas - 2023
 
