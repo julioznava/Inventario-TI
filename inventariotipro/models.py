@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 opcion_MARCA = [
     ["AOC", "AOC"],
     ["DELL", "DELL"],
